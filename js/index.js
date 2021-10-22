@@ -3,7 +3,6 @@ import colors from "./colors.js";
 const DELAY = 1000;
 
 const refs = {
-  body: document.body,
   startBtn: document.querySelector('[data-action="start"]'),
   stopBtn: document.querySelector('[data-action="stop"]'),
 };
@@ -15,7 +14,6 @@ function OnBtnClickStart() {
   refs.startBtn.setAttribute("disabled", "disabled");
 
   refs.stopBtn.addEventListener("click", OnBtnClickStop);
-
   function OnBtnClickStop() {
     clearInterval(intervalId);
     refs.startBtn.disabled = false;
@@ -24,7 +22,7 @@ function OnBtnClickStart() {
 
 function changeColor() {
   let curentColorIndex = randomIntegerFromInterval(0, colors.length - 1);
-  refs.body.style.backgroundColor = colors[curentColorIndex];
+  document.body.style.backgroundColor = colors[curentColorIndex];
 }
 
 const randomIntegerFromInterval = (min, max) => {
